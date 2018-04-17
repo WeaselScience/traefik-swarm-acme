@@ -1,4 +1,4 @@
-FROM traefik:v1.3.8-alpine
+FROM traefik:1.5-alpine
 ADD traefik.toml /etc/traefik/traefik.toml
 RUN mkdir /acme
 VOLUME /acme

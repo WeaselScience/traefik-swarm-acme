@@ -1,22 +1,16 @@
-debug = false
-checkNewVersion = true
-logLevel = "ERROR"
 defaultEntryPoints = ["https","http"]
 
 [entryPoints]
-  [entryPoints.http]
-  address = ":80"
-    [entryPoints.http.redirect]
-    entryPoint = "https"
-  [entryPoints.https]
-  address = ":443"
-  [entryPoints.https.tls]
-
-[retry]
+[entryPoints.http]
+address = ":80"
+[entryPoints.http.redirect]
+entryPoint = "https"
+[entryPoints.https]
+address = ":443"
+[entryPoints.https.tls]
 
 [docker]
 endpoint = "unix:///var/run/docker.sock"
-domain = "traefik"
 watch = true
 exposedbydefault = false
 swarmmode = true
@@ -25,5 +19,5 @@ swarmmode = true
 storage = "/acme/acme.json"
 entryPoint = "https"
 OnHostRule = true
-
-[web]
+[acme.httpChallenge]
+entryPoint = "http"
